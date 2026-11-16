@@ -63,7 +63,7 @@ class LoadPropertiesCommand implements Command {
 public class LocalizedDemoApp {
     public static void main(String[] args) {
         // Set locale to system default or specify as needed
-        Locale locale = new Locale("de", "DE");
+        Locale locale = new Locale("it", "IT");
         //Locale locale = new Locale("en", "US");
         //Locale locale = new Locale("fr", "FR");
         // select de/DE here after adding the properties file
