@@ -43,27 +43,18 @@ class LoadPropertiesCommand implements Command {
         this.messages = messages;
     }
 
+    
     @Override
     public void execute() {
-        FileInputStream input = null;
-
-        // replace this with try-with-resources
-        try {
-            input = new FileInputStream("config.properties");
+        try (FileInputStream input = new FileInputStream("config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
+
             String appName = prop.getProperty("app.name");
             System.out.println(messages.getString("appName") + ": " + appName);
+
         } catch (IOException e) {
             System.err.println(messages.getString("error") + ": " + e.getMessage());
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    System.err.println(messages.getString("error") + " while closing: " + e.getMessage());
-                }
-            }
         }
     }
 }
